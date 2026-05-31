@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wedding RSVP | June 6, 2026</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <header class="nav">
+      <div class="nav-brand">
+        <div class="logo-circle">
+          <a href="#"><img src="/images/logo.png" alt="R&M Logo" /></a>
+        </div>
+      </div>
+
+      <nav>
+        <a href="#story">Story</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#rsvp">RSVP</a>
+      </nav>
+    </header>
+
+    <main id="home" class="hero">
+      <div class="hero-slider">
+        <!-- NEW IMAGE 1 -->
+        <div
+          class="hero-slide active"
+          style="background-image: url(&quot;/images/IMG_3933.JPG&quot;)"
+        ></div>
+
+        <!-- NEW IMAGE 2 -->
+        <div
+          class="hero-slide"
+          style="background-image: url(&quot;/images/IMG_3978.JPG&quot;)"
+        ></div>
+
+        <!-- NEW IMAGE 3 -->
+        <div
+          class="hero-slide"
+          style="background-image: url(&quot;/images/IMG_3971.JPG&quot;)"
+        ></div>
+
+        <!-- EXISTING IMAGES -->
+        <div
+          class="hero-slide"
+          style="background-image: url(&quot;/images/IMG_3934.JPG&quot;)"
+        ></div>
+
+        <div
+          class="hero-slide"
+          style="background-image: url(&quot;/images/IMG_3917.JPG&quot;)"
+        ></div>
+
+        <div
+          class="hero-slide"
+          style="background-image: url(&quot;/images/IMG_3907.JPG&quot;)"
+        ></div>
+
+        <div
+          class="hero-slide"
+          style="background-image: url(&quot;/images/IMG_3949.JPG&quot;)"
+        ></div>
+      </div>
+
+      <div class="hero-overlay"></div>
+
+      <section class="hero-card reveal">
+        <h1 class="couple-name">R and M</h1>
+        <p class="date">June 6, 2026</p>
+
+        <div class="countdown" id="countdown">
+          <div><strong id="days">00</strong><span>Days</span></div>
+          <div><strong id="hours">00</strong><span>Hours</span></div>
+          <div><strong id="minutes">00</strong><span>Minutes</span></div>
+          <div><strong id="seconds">00</strong><span>Seconds</span></div>
+        </div>
+
+        <a href="#rsvp" class="btn">Confirm Attendance</a>
+      </section>
+    </main>
+
+    <section id="story" class="section split reveal">
+      <div class="story-content">
+        <p class="eyebrow">Denim, garden, and love</p>
+        <h2>A celebration of love and family</h2>
+        <p>
+          Surrounded by the people closest to our hearts, we are beginning a new
+          chapter filled with love, gratitude, and beautiful memories. We would
+          be honored to celebrate this special day with you.
+        </p>
+        <a href="#rsvp" class="story-btn">Reserve Your Seat</a>
+      </div>
+
+      <div class="story-photo-wrap">
+        <img src="/images/IMG_4017.JPG" alt="Couple portrait" />
+      </div>
+    </section>
+
+    <section class="details reveal">
+      <div class="detail-card">
+        <span>📅</span>
+        <h3>Date</h3>
+        <p>Saturday, June 6, 2026</p>
+      </div>
+
+      <div class="detail-card">
+        <span>📍</span>
+        <h3>Location</h3>
+        <p>Faith Alliance Fellowship Church, La Verna</p>
+      </div>
+
+      <div class="detail-card">
+        <span>💙</span>
+        <h3>Theme</h3>
+        <p>Denim blue, white, garden green, and romantic red accents</p>
+      </div>
+
+      <div class="detail-card">
+        <span>✉️</span>
+        <h3>RSVP</h3>
+        <p>Kindly send your response using the form below.</p>
+      </div>
+    </section>
+
+    <section id="gallery" class="section reveal">
+      <p class="eyebrow center">Memories</p>
+      <h2 class="center">Photo Gallery</h2>
+
+      <div class="gallery-carousel">
+        <button class="gallery-btn prev" type="button">‹</button>
+
+        <div class="gallery-track" id="galleryTrack">
+          <img src="/images/IMG_3902.JPG" alt="Bride portrait" />
+          <img src="/images/IMG_3903.JPG" alt="Bride portrait" />
+          <img src="/images/IMG_3949.JPG" alt="Couple sitting back to back" />
+          <img src="/images/IMG_3957.JPG" alt="Family photo" />
+          <img src="/images/IMG_4047.JPG" alt="Forehead kiss" />
+          <img src="/images/IMG_4056.JPG" alt="Romantic kiss" />
+          <img src="/images/IMG_4064.JPG" alt="Family heart pose" />
+          <img src="/images/IMG_4085.JPG" alt="Couple lying on grass" />
+          <img src="/images/IMG_4097.JPG" alt="Couple near car" />
+          <img src="/images/IMG_3884.JPG" alt="Groom portrait" />
+        </div>
+
+        <button class="gallery-btn next" type="button">›</button>
+      </div>
+    </section>
+
+    <section id="rsvp" class="section rsvp-section reveal">
+      <div class="rsvp-card">
+        <p class="eyebrow center">Your Presence Matters</p>
+        <h2 class="center">RSVP</h2>
+        <form id="rsvpForm">
+          <div class="form-grid">
+            <input name="fullName" placeholder="Full name" required />
+            <input
+              name="email"
+              type="email"
+              placeholder="Email address"
+              required
+            />
+            <input name="phone" placeholder="Phone number" required />
+            <input
+              name="guestCount"
+              type="number"
+              min="1"
+              max="20"
+              placeholder="Number of guests"
+              required
+            />
+          </div>
+          <select name="willAttend" required>
+            <option value="" disabled selected>Will you attend?</option>
+            <option value="yes">Yes, I will attend</option>
+            <option value="no">Sorry, I cannot attend</option>
+          </select>
+          <textarea
+            name="message"
+            rows="5"
+            placeholder="Message / wishes"
+          ></textarea>
+          <button class="btn full" type="submit">Submit RSVP</button>
+          <p id="formMessage" class="form-message"></p>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      <p>With love, see you on June 6, 2026 💙</p>
+    </footer>
+    <!-- Image Modal -->
+    <div class="image-modal" id="imageModal">
+      <span class="close-modal">&times;</span>
+      <img id="modalImage" src="" alt="Preview" />
+    </div>
+
+    <script src="/script.js"></script>
+  </body>
+</html>
