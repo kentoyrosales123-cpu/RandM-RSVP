@@ -43,14 +43,6 @@ if (form && message) {
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    // Validate willAttend is not empty
-    const willAttendSelect = form.querySelector("select[name='willAttend']");
-    if (!willAttendSelect.value) {
-      message.textContent = "Please select whether you will attend.";
-      message.style.color = "#e45757";
-      return;
-    }
-
     message.textContent = "Submitting your RSVP...";
     message.style.color = "#2f6f9f";
 
