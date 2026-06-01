@@ -22,14 +22,19 @@ exports.createRsvp = async (req, res) => {
       message,
     });
 
-    if (willAttend === "yes") {
+    try {
       await sendAttendanceEmail(rsvp);
+    } catch (error) {
+      return res.status(201).json({
+        message: "Thank you! Your RSVP was submitted, but the email notification could not be sent.",
+        emailSent: false,
+        rsvp,
+      });
     }
 
     res.status(201).json({
-      message: willAttend === "yes"
-        ? "Thank you! Your RSVP was submitted and the couple has been notified."
-        : "Thank you! Your RSVP was submitted.",
+      message: "Thank you! Your RSVP was submitted and the couple has been notified.",
+      emailSent: true,
       rsvp,
     });
   } catch (error) {
