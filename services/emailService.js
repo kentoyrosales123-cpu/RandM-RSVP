@@ -1,23 +1,26 @@
 const nodemailer = require("nodemailer");
 
 const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: Number(process.env.EMAIL_PORT) || 587,
-  secure: false,
+  service: "gmail",
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS,
   },
-  connectionTimeout: 10000,
-  greetingTimeout: 10000,
-  socketTimeout: 10000,
 });
 
 async function sendAttendanceEmail(rsvp) {
   try {
-    if (rsvp.willAttend !== "yes") return;
+    const willAttend = String(rsvp.willAttend || "").toLowerCase();
 
-    await transporter.sendMail({
+    if (willAttend !== "yes") {
+      console.log(
+        "ℹ️ RSVP saved but email skipped. willAttend:",
+        rsvp.willAttend,
+      );
+      return;
+    }
+
+    const info = await transporter.sendMail({
       from: `"Wedding RSVP" <${process.env.EMAIL_USER}>`,
       to: process.env.EMAIL_TO,
       subject: "New Wedding RSVP Confirmation",
@@ -31,9 +34,9 @@ async function sendAttendanceEmail(rsvp) {
       `,
     });
 
-    console.log("RSVP email sent successfully");
+    console.log("✅ Email sent:", info.response);
   } catch (error) {
-    console.error("EMAIL ERROR:", error.message);
+    console.error("❌ Email failed:", error.message);
   }
 }
 
