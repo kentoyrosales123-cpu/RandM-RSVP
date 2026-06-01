@@ -8,10 +8,21 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-const requiredEnv = ["MONGODB_URI", "EMAIL_USER", "EMAIL_PASS", "EMAIL_TO"];
 
 function getMissingEnv() {
-  return requiredEnv.filter((key) => !process.env[key]);
+  const required = ["MONGODB_URI", "EMAIL_TO"];
+
+  if (process.env.RESEND_API_KEY) {
+    required.push("RESEND_API_KEY");
+  } else {
+    required.push("EMAIL_USER", "EMAIL_PASS");
+  }
+
+  return required.filter((key) => !process.env[key]);
+}
+
+function getEmailProvider() {
+  return process.env.RESEND_API_KEY ? "resend" : "smtp";
 }
 
 app.use(cors());
@@ -23,6 +34,7 @@ app.get("/api/health", (req, res) => {
   res.json({
     ok: true,
     databaseConnected: mongoose.connection.readyState === 1,
+    emailProvider: getEmailProvider(),
     missingEnv: getMissingEnv(),
   });
 });
