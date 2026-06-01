@@ -1,8 +1,15 @@
 const Rsvp = require("../models/Rsvp");
 const { sendAttendanceEmail } = require("../services/emailService");
+const mongoose = require("mongoose");
 
 exports.createRsvp = async (req, res) => {
   try {
+    if (mongoose.connection.readyState !== 1) {
+      return res.status(503).json({
+        message: "RSVP database is not connected. Please check the Render MONGODB_URI setting.",
+      });
+    }
+
     const { fullName, email, phone, guestCount, willAttend, message } = req.body;
 
     if (!fullName || !email || !phone || !guestCount || !willAttend) {

@@ -56,7 +56,18 @@ if (form && message) {
         body: JSON.stringify(payload),
       });
 
-      const data = await response.json();
+      const responseText = await response.text();
+      let data = {};
+
+      try {
+        data = responseText ? JSON.parse(responseText) : {};
+      } catch (error) {
+        throw new Error(
+          response.ok
+            ? "RSVP submitted, but the server returned an unexpected response."
+            : "The RSVP server is currently unavailable. Please try again in a moment.",
+        );
+      }
 
       if (!response.ok) {
         throw new Error(data.message || "Failed to submit RSVP.");
